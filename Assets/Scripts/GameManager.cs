@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
        // spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>();
-
+        //CanTetris
        board = GameObject.FindObjectOfType<BoardManager>();
        spawner = GameObject.FindObjectOfType<SpawnerManager>();
 
