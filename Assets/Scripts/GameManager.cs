@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         
         board.TumSatirlariTemizleFNC();
     }
-
+  //Esensu
 
     Vector2 VectoruIntYapFNC(Vector2 Vector)
     {
