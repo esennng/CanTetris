@@ -94,6 +94,68 @@ public class BoardManager : MonoBehaviour
          Izgara[(int)pos.x, (int)pos.y] = child;
       }
    }
+
+
+   bool SatirTamamlandiMiFNC(int y)
+   {
+      for (int x = 0; x < genislik; ++x)
+      {
+         if (Izgara[x, y] == null)
+         {
+            return false;
+         }
+      }
+      return true;
+   }  
+
+   void SatirTemizleFNC(int y)
+   {
+      for (int x = 0; x < genislik; ++x)
+      {
+         if (Izgara[x, y] != null)
+         {
+            Destroy(Izgara[x,y].gameObject);
+         }
+
+         Izgara[x, y] = null;
+      }
+   }
+
+   void BirSatirAsagiIndirFNC(int y)
+   {
+      for (int x = 0; x < genislik; ++x)
+      {
+         if (Izgara[x, y] != null)
+         {
+            Izgara[x, y - 1] = Izgara[x, y];
+            Izgara[x, y] = null;
+            Izgara[x,y-1].position+=Vector3.down;
+         }
+      }
+   }
+
+   void TumSatirlariAsagıIndirFNC(int baslangicY)
+   {
+      for (int i = baslangicY; i < yukseklik; ++i)
+      {
+         BirSatirAsagiIndirFNC(i);
+      }
+   }
+
+   public void TumSatirlariTemizleFNC()
+   {
+      for (int y = 0; y < yukseklik; ++y)
+      {
+         if (SatirTamamlandiMiFNC(y))
+         {
+            SatirTemizleFNC(y);
+            TumSatirlariAsagıIndirFNC(y+1);
+            y--;
+         }
+      }
+   }
+   
+   
    
    
    Vector2 VectoruIntYapFNC(Vector2 Vector)
