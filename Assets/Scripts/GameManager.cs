@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void GirisKontrolFNC()
     {
+        Debug.Log(Input.GetKey("right"));
         if ((Input.GetKey("right")&& Time.time>SagSolTusaBasmaSayac) || Input.GetKeyDown("right"));
         {
             
